@@ -1,0 +1,22 @@
+  <%= form_with model: @todo do |form| %>
+    <div class="mb-4">
+      <%= form.label :title, class: "block text-lg font-semibold text-gray-700 mb-2" %>
+      <%= form.text_field :title, class: "w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-purple-500 placeholder-gray-400" %>
+    </div>
+
+    <div class="mb-4">
+      <%= form.label :description, class: "block text-lg font-semibold text-gray-700 mb-2" %>
+      <%= form.text_area :description, class: "w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-purple-500 placeholder-gray-400" %>
+    </div>
+
+    <div class="mb-4">
+      <%= form.label :completed, class: "block text-lg font-semibold text-gray-700 mb-2" %>
+      <%= form.check_box :completed, class: "mr-2 leading-tight text-purple-600" %>
+    </div>
+
+    <%= form.hidden_field :project_id %>
+
+    <div class="mb-4">
+      <%= form.submit class: "px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-md focus:outline-none focus:ring focus:border-purple-500 cursor-pointer" %>
+    </div>
+  <% end %>

@@ -1,0 +1,11 @@
+<!-- Assuming you have already included the Tailwind CSS links in your HTML -->
+<h1 class="text-4xl font-bold mb-4">TODO List</h1> <%= link_to 'Back', project_path(@project), style: 'color: blue' %>
+
+<div class="space-y-4">
+  <% @todos.each do |todo| %>
+    <div class="flex items-center justify-between bg-gray-100 p-4 rounded-lg">
+      <%= link_to todo.title, project_todo_path(todo.project, todo), class: "text-blue-500 hover:underline" %>
+      <%= link_to 'Destroy', todo, 'data-turbo-method': :delete, class: "text-red-500 hover:underline" %>
+    </div>
+  <% end %>
+</div>

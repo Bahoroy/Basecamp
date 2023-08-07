@@ -1,0 +1,86 @@
+
+            </main>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panels -->
+
+      <!-- Settings Panel -->
+      <!-- Backdrop -->
+      <div
+        x-show="isSettingsPanelOpen"
+        class="fixed inset-0 bg-black bg-opacity-50"
+        @click="isSettingsPanelOpen = false"
+        aria-hidden="true"
+      ></div>
+      <!-- Panel -->
+      <section
+        x-transition:enter="transform transition-transform duration-300"
+        x-transition:enter-start="translate-x-full"
+        x-transition:enter-end="translate-x-0"
+        x-transition:leave="transform transition-transform duration-300"
+        x-transition:leave-start="translate-x-0"
+        x-transition:leave-end="translate-x-full"
+        x-show="isSettingsPanelOpen"
+        class="fixed inset-y-0 right-0 w-64 bg-white border-l border-indigo-100 rounded-l-3xl"
+      >
+        <div class="px-4 py-8">
+          <h2 class="text-lg font-semibold">Create</h2>
+  <% if controller_name == 'projects' && action_name == 'index' %>
+<%= link_to 'New Project', new_project_path, class: 'text-lg font-semibold hover:underline relative' %> <br>
+    <% end %>
+  <% if controller_name == 'projects' && action_name == 'show' %>
+<%= link_to 'Message Boards', project_andrs_path(@project), class: 'text-lg font-semibold hover:underline relative' %>
+<%= link_to 'Attachments', project_cets_path(@project), class: 'text-lg font-semibold hover:underline relative' %> <br>
+<%= link_to 'Todos', project_todos_path(@project), class: 'text-lg font-semibold hover:underline relative' %>
+<% elsif controller_name == 'andrs' && action_name == 'index'  %>
+<%= link_to 'New Message Board', new_project_andr_path(@project), class: 'text-lg font-semibold hover:underline relative' %>
+<% elsif controller_name == 'todos' && action_name == 'index' %>
+<%= link_to 'New Todo', new_project_todo_path(@project), class: 'text-lg font-semibold hover:underline relative' %>
+  <% end %>
+<style>
+/* styles.css */
+.hover:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px; /* Adjust this value to control the tail's position */
+  width: 100%;
+  height: 2px; /* Adjust this value to control the tail's thickness */
+  background-color: #000; /* Adjust this color to change the tail's color */
+  opacity: 0; /* Initially, the tail is invisible */
+  transition: opacity 0.2s; /* Add a smooth transition effect for the tail */
+}
+
+.hover:hover:after {
+  opacity: 1; /* On hover, the tail becomes visible */
+}
+
+</style>
+
+        </div>
+      </section>
+
+
+
+    <!-- Author links -->
+    
+    </div>
+
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
+    <script>
+        const setup = () => {
+            return {
+            isSidebarOpen: false,
+            currentSidebarTab: null,
+            isSettingsPanelOpen: false,
+            isSubHeaderOpen: false,
+            watchScreen() {
+                if (window.innerWidth <= 1024) {
+                this.isSidebarOpen = false
+                }
+            },
+        }
+      }
+    </script>

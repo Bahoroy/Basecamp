@@ -1,0 +1,42 @@
+<div class="mx-auto md:w-2/3 w-full flex flex-col items-center">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg"><%= notice %></p>
+  <% end %>
+
+  <div class="bg-white shadow-md p-4 mb-4 rounded-lg w-full md:w-2/3">
+    <h2 class="text-2xl font-bold mb-3"><%= @andr.title %></h2>
+    <div class="flex justify-start space-x-2">
+      <%= link_to 'Edit', edit_project_andr_path(@andr.project, @andr), class: "rounded-lg py-3 px-5 bg-green-300 font-medium" %>
+      <%= button_to 'Destroy', andr_path(@andr), method: :delete, class: "rounded-lg py-3 px-5 bg-red-400 font-medium" %>
+      <%= link_to 'Back', project_andrs_path(@andr.project), class: "rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    </div>
+  </div>
+
+  <%= form_with(model: @message, class: "w-full md:w-2/3") do |form| %>
+    <div class="my-5">
+      <%= form.label :comment %>
+      <%= form.text_field :comment, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 w-full", required: true %>
+    </div>
+
+    <div class="my-5">
+      <%= form.hidden_field :andr_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 w-full" %>
+    </div>
+
+    <div class="text-center">
+      <%= form.submit 'Create', class: "rounded-lg py-3 px-5 bg-blue-600 text-white font-medium cursor-pointer" %>
+    </div>
+  <% end %>
+
+  <div class="w-full md:w-2/3">
+    <% @messages.each do |message| %>
+    <% if message.comment %>
+      
+      <div class="bg-white shadow-md p-4 mb-4 rounded-lg ">
+        <p><%= message.comment %></p>
+        <p class="text-gray-500"><%= message.andr.project.user.email %></p>
+        <%= link_to 'Destroy', message, 'data-turbo-method': :delete %>
+      </div>
+    <% end %>
+    <% end %>
+  </div>
+</div>

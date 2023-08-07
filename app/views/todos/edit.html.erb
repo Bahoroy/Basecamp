@@ -1,0 +1,8 @@
+<!-- Assuming you have already included the Tailwind CSS links in your HTML -->
+<div class="">
+  <h2 class="text-3xl font-bold text-purple-600 mb-6">Edit Task</h2>
+
+<%= render "form" %>
+
+  <%= link_to "Back to List", project_todo_path(@todo.project,@todo), class: "" %>
+</div>

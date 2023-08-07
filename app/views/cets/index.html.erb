@@ -1,0 +1,25 @@
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p> <br><br>
+  <% end %>
+<%= link_to 'Back', project_path(@project), style: 'color: blue' %><br>
+  <%= form_with(model: @attachment, class: "contents flex items-center mb-4") do |form| %>
+    <%= form.file_field :file, class: "file-input", requred: true %>
+    <%= form.hidden_field :project_id %>
+    <%= form.submit 'Upload', class: "ml-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %> <br>
+  <% end %>
+
+  <div class="grid gap-4 grid-cols-2">
+    <% @attachments.each do |attachment| %>
+      <% if attachment.present? %>
+      <% if attachment.file.attached? %>
+        <div class="border border-gray-300 rounded-lg p-4">
+          <p><%= attachment.file.filename %></p>
+          <a href="<%= rails_blob_path(attachment.file) %>" download class="text-blue-500 hover:underline">Download</a> <br>
+          <%= link_to 'Destroy', attachment, 'data-turbo-method': :delete, class: "text-red-500 hover:underline" %>
+        </div>
+      <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

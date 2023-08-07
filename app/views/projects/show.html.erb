@@ -1,0 +1,10 @@
+  <div style='margin-top: -44%; margin-left: -20%'>
+  <h1 style='margin-left: 242%' class="text-4xl font-bold text-blue-700"><%= @project.name %></h1>
+  <p style='margin-left: 242%; text-align: center;' class="text-gray-600 mt-0 text-lg"><%= @project.description %></p>
+</div>
+
+<div class="flex items-center space-x-4 mb-8" style='margin-top: -30%'>
+  <%= link_to "Edit this project", edit_project_path(@project), class:"bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded" %>
+  <%= link_to "Back to projects", projects_path, class:"bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded" %>
+  <%= button_to "Destroy this project", @project, method: :delete, data: { confirm: 'Are you sure?' }, class:"bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded" %>
+</div>

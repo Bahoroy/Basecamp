@@ -1,0 +1,11 @@
+<!-- Assuming you have already included the Tailwind CSS links in your HTML -->
+<div class="max-w-lg mx-auto my-8 p-6 bg-white rounded-lg shadow-lg">
+  <h2 class="text-2xl font-bold mb-4 text-purple-600"><%= @todo.title %></h2>
+  <p class="text-gray-600 mb-4"><%= @todo.description %></p>
+  <p class="text-gray-600 mb-4">Completed: <%= @todo.completed ? "Yes" : "No" %></p>
+
+  <div class="flex items-center justify-between mt-4">
+    <%= link_to "Edit", edit_project_todo_path(@todo.project), class: "px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-md focus:outline-none focus:ring focus:border-purple-500 cursor-pointer" %>
+    <%= link_to "Back to List", project_todos_path, class: "px-4 py-2 bg-gray-700 hover:bg-gray-800 text-white rounded-md focus:outline-none focus:ring focus:border-gray-500 cursor-pointer" %>
+  </div>
+</div>
